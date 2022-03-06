@@ -35,10 +35,6 @@ public class Validator {
     }
     
     public static boolean isValidInBox(int[][] grid, int x, int y, int val) {
-        if (x==1 && y == 4) {
-            println("");
-        }
-        
         int xOffset = (x / 3) * 3;
         int yOffset = (y / 3) * 3;
         

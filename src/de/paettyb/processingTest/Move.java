@@ -22,6 +22,14 @@ public final class Move {
         return val == move.val;
     }
     
+    @Override
+    public String toString() {
+        return "Move{" +
+                "x=" + x +
+                ", y=" + y +
+                ", val=" + val +
+                '}';
+    }
 }
 
 class MoveBook{
