@@ -53,7 +53,7 @@ public class Solver {
         
         Move currentMove;
         
-        while(!validMoves.isEmpty()){
+//        while(!validMoves.isEmpty()){
             currentMove = validMoves.remove(0);
             grid[currentMove.x][currentMove.y] = currentMove.val;
             boolean subsequentSolutionUnique = findUniqueSolution(grid, new ArrayList<>(validMoves));
@@ -69,14 +69,23 @@ public class Solver {
                     }
                 }
                 return true;
+            } else {
+                for (Move m : validMoves) {
+                    if (m.x == currentMove.x && m.y == currentMove.y) {
+                        grid[m.x][m.y] = m.val;
+                        boolean otherSolution = findUniqueSolution(grid, new ArrayList<>(validMoves));
+                        grid[m.x][m.y] = 0;
+                        if (otherSolution) return true;
+                    }
+                }
+                return false;
             }
-        }
-        return false;
+//        }
     }
     
     public static int emptyGrid(int[][] grid){
         int removed = 0;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 20; i++) {
             int x = random.nextInt(9);
             int y = random.nextInt(9);
             if(grid[x][y] == 0) continue;
